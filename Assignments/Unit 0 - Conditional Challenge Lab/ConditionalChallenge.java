@@ -1,19 +1,19 @@
 public class ConditionalChallenge {
     public static void main(String[] args) {
-        
+
 
         // Part 1: Temperature Converter
         System.out.println("--- Part 1: Temperature Converter ---");
         double temperature = 15;
         boolean isCold = true;
-        if (isCold){
+        if (isCold) {
             temperature = temperature - 15;
             System.out.println("It's cold and the temperature is" + temperature + "degrees");
         } else {
             temperature = temperature + 10;
             System.out.println("It's not cold and the temperature is " + temperature + "  degrees");
         }
-        
+
 
         // Part 2: Grade Calculator
         System.out.println("--- Part 2: Grade Calculator ---");
