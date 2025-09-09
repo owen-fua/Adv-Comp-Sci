@@ -5,5 +5,15 @@ public class RectangleTester {
 
         Rectangle rect2 = new Rectangle();
         System.out.println(rect.equals(rect2));
+
+
+        rect2.setLength(9);
+        rect2.setWidth(5);
+        System.out.println(rect2.toString());
+
+        rect.setLength(6);
+        rect.setWidth(8);
+        System.out.println(rect.toString());
+        
     }
 }
