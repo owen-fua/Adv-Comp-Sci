@@ -3,7 +3,7 @@ public class RectangleTester {
         Rectangle rect = new Rectangle();
         System.out.println(rect.toString());
 
-        Rectangle rect2 = new Rectangle();
+        Rectangle rect2 = new Rectangle(4, 3);
         System.out.println(rect.equals(rect2));
 
 

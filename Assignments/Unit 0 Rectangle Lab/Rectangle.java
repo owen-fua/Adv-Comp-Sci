@@ -3,8 +3,8 @@ public class Rectangle {
     int width;
 
     public Rectangle(int newLength, int newWidth) {
-        newLength = 5;
-        newWidth = 6;
+        length = newLength;
+        width = newWidth;
     }
 
     public Rectangle() {
@@ -30,8 +30,10 @@ public class Rectangle {
     }
 
     public String toString() {
-        return "This rectangle has a length of " + length + " and a width of " + width
-                + ". It's area is " + length * width + ". It's Perimeter is " + 2 * (length + width) + ". It's diagonal is " + Math.sqrt(length * length + width * width);
+        String descript = "This rectangle has a length of " + length + " and a width of " + width;
+        String descript2 = ". It's area is " + length * width + ". It's Perimeter is "; 
+        String descript3 = 2 * (length + width) + "It's diagonal is " + Math.sqrt(length * length + width * width);
+        return descript +  descript2 + descript3;
     }
 
     public boolean equals(Rectangle other) {
@@ -54,5 +56,5 @@ public class Rectangle {
         return Math.sqrt(length * length + width * width);
     }
 
-    }
+}
 
