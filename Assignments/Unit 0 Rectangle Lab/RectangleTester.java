@@ -4,7 +4,7 @@ public class RectangleTester {
         System.out.println(rect.toString());
 
         Rectangle rect2 = new Rectangle(4, 3);
-        System.out.println(rect.equals(rect2));
+        System.out.println("Are the rectangles equal? " + rect.equals(rect2));
 
 
         rect2.setLength(9);
