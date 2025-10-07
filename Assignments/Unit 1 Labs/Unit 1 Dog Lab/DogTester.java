@@ -13,22 +13,22 @@ public class DogTester {
         System.out.println(Shaprio.toString()); // owner should be Jim
         // char stuff
         System.out.println("The dog chars of an id with 123, 693, and 789 are: ");
-        System.out.print(Dog.generateDogChar(123)); // should return 'L'
-        System.out.print(Dog.generateDogChar(693)); // should return 'N'
-        System.out.println(Dog.generateDogChar(789)); // should return 'idk'
+        System.out.print(PawesomeUtils.generateDogChar(123)); // should return 'L'
+        System.out.print(PawesomeUtils.generateDogChar(693)); // should return 'N'
+        System.out.println(PawesomeUtils.generateDogChar(789)); // should return 'idk'
         // equals
         System.out.println("Are Shaprio and Ryan equal? " + Shaprio.equals(Ryan)); // false
         System.out.println("Are Shaprio and Shaprio equal? " + Shaprio.equals(Shaprio)); // true
         // pickup
         Dog Bob = new Dog("Bob", "Maria", 14, 227);
-        System.out.println(Dog.pickup(Bob, "Maria"));
+        System.out.println(PawesomeUtils.pickup(Bob, "Maria"));
         System.out.println("Still in facilty = " + Bob.getStillInFacility()); // in facilty false
-        System.out.println(Dog.pickup(Bob, "John"));
+        System.out.println(PawesomeUtils.pickup(Bob, "John"));
         Bob.setStillInFacility(true); // set back to true
         System.out.println("Still in facilty = " + Bob.getStillInFacility()); // in facility true
         // check in
         Bob.setStillInFacility(false);
-        Dog.checkIn(Bob, "NewOwner");
+        PawesomeUtils.checkIn(Bob, "NewOwner");
         System.out.println(Bob.toString());
 
 
