@@ -18,8 +18,13 @@ public class PawesomeUtils {
     }
 
     public static void checkIn(Dog dog, String personName) {
-        dog.setStillInFacility(true);
-        dog.setOwnerName(personName);
+        if (validateDogTag(dog)) {
+            dog.setStillInFacility(true);
+            dog.setOwnerName(personName);
+        } else {
+            System.out.println("This is a counterfeit dog and was denied entry.");
+        }
+
     }
 
     public static int getRandomNum(int min, int max) {
@@ -29,8 +34,9 @@ public class PawesomeUtils {
     public static int validateDogId(int dogId) {
         if (dogId >= 100 && dogId <= 999) {
             return dogId;
-        } else
+        } else {
             return getRandomNum(100, 1000);
+        }
     }
 
     public static boolean validateDogTag(Dog dog) {
@@ -43,6 +49,26 @@ public class PawesomeUtils {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static int convertAgeToHumanAge(Dog dog) {
+        if (dog.age == 1) {
+            return 15;
+        } else if (dog.age == 2) {
+            return 24;
+        } else {
+            return 24 + (dog.age * 5);
+        }
+    }
+
+    public static int convertAgeToDogYears(int humanYears) {
+        if (humanYears <= 15) {
+            return 1;
+        } else if (humanYears > 15 && humanYears <= 24) {
+            return 2;
+        } else {
+            return (humanYears - 24) / 5;
         }
     }
 }

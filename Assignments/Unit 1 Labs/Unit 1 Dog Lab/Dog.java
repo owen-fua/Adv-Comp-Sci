@@ -13,7 +13,7 @@ public class Dog {
         this.name = name;
         this.ownerName = ownerName;
         this.age = age;
-        this.dogId = dogId;
+        this.dogId = PawesomeUtils.validateDogId(dogId);
         this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
         this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
@@ -56,7 +56,12 @@ public class Dog {
     }
 
     public void setDogId(int dogId) {
+        if (dogId <= 100 || dogId >= 999) {
+            dogId = PawesomeUtils.validateDogId(dogId);
+        }
         this.dogId = dogId;
+        this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, dogChar);
     }
 
     public char getDogChar() {

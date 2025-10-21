@@ -30,7 +30,7 @@ public class StringDemo{
         // substring() -> returns a piece of string given a starting and ending index
 
         // "Owen Fua"
-        int firstSpace = fullName2.indexOf(""); // finds the index of the first space
+        int firstSpace = fullName2.indexOf(" "); // finds the index of the first space
 
         String middleLastName = fullName2.substring(firstSpace); // create substring of first space to the end
 
