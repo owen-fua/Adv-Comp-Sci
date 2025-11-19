@@ -30,8 +30,8 @@ public class StudentRecord {
     // to-do: implement getTestScore
 
     public int getTestScore(int testNumber) {
-        if (scores[testNumber] == null) {
-            return 0;
+        if (testNumber < 0 || testNumber >= scores.length) {
+            return -1;
         } else {
             return scores[testNumber];
         }
@@ -42,16 +42,21 @@ public class StudentRecord {
     // to-do: implement toString
     public String toString() {
         String base = name + "'s scores: [";
-        for (int i = 0; i < scores.length; i++) {
-            base += "" + i;
+        for (int i = 0; i < scores.length - 1; i++) {
+            base += scores[i] + ", ";
         }
+        base += scores[scores.length - 1];
         return base + "]";
     }
 
     // methods
     public boolean equals(StudentRecord other) {
+        if (scores.length != other.scores.length) {
+            return false;
+        }
+
         for (int i = 0; i < scores.length; i++) {
-            if (scores[i] == other.scores[i]) {
+            if (scores[i] != other.scores[i]) {
                 return false;
             }
         }
@@ -69,7 +74,11 @@ public class StudentRecord {
      * @return the double average of the values in scores
      */
     public double getAverage(int first, int last) {
-        return (scores[first] + scores[last]) / 2;
+        double sum = 0;
+        for (int i = first; i <= last; i++) {
+            sum += scores[i];
+        }
+        return sum / (last - first + 1);
     }
 
 
@@ -81,7 +90,7 @@ public class StudentRecord {
      */
     public boolean hasImproved() {
         int highestNum = scores[0];
-        for (int i = 1; i < scores.length; i++) {
+        for (int i = 0; i < scores.length; i++) {
             if (scores[i] < highestNum) {
                 return false;
             }
@@ -99,21 +108,13 @@ public class StudentRecord {
      */
 
     public double getFinalAverage() {
-        double average = 0;
         if (hasImproved()) {
             int index = scores.length / 2;
-            while (index != scores.length) {
-                double averageOne = getAverage(scores[index], scores[index]);
-                average = getAverage((int) averageOne, scores[index]);
-                index++;
-            }
-            return average;
+            return getAverage(index, scores.length - 1);
         } else {
-            for (int i = 0; i < scores.length - 1; i++) {
-                average = getAverage(i, i + 1);
-            }
-            return average;
+            return getAverage(0, scores.length - 1);
         }
     }
-
 }
+
+
