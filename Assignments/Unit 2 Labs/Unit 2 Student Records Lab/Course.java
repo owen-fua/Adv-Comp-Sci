@@ -7,6 +7,11 @@ public class Course {
         this.enrolledStudents = enrolledStudents;
     }
 
+    Course(String courseName, int maxEnrollment) {
+        this.courseName = courseName;
+        this.enrolledStudents = new StudentRecord[maxEnrollment];
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -50,6 +55,58 @@ public class Course {
             sum += scores[testNumber];
         }
         return sum / enrolledStudents.length;
+    }
+
+    public boolean isFull() {
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void enrollStudent(StudentRecord student) {
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] == null) {
+                enrolledStudents[i] = student;
+                return;
+            }
+        }
+    }
+
+    public boolean dropStudent(StudentRecord student) {
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] != null
+                    && enrolledStudents[i].getName().equals(student.getName())) {
+                enrolledStudents[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int countEnrolledStudents() {
+        int count = 0;
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] != null) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void increaseClassSizeBy(int sizeIncrease) {
+        int index = 0;
+        StudentRecord[] newArray = new StudentRecord[enrolledStudents.length + sizeIncrease];
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            newArray[i] = enrolledStudents[i];
+            index++;
+        }
+        for (int i = 0; i < sizeIncrease; i++) {
+            newArray[index + i] = null;
+        }
+        enrolledStudents = newArray;
     }
 
 

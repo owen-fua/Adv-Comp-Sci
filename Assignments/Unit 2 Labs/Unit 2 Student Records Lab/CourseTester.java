@@ -37,5 +37,26 @@ public class CourseTester {
         System.out.println("Average of test one: ");
         System.out.println(compSci.calculateTestAverage(1));
 
+
+        // SR 2
+        System.out.println("\nNew course: Math");
+        Course math = new Course("Math", 2);
+        System.out.println("Is math full?");
+        System.out.println(math.isFull()); // false cuz empty
+        math.enrollStudent(owen);
+        math.enrollStudent(bob);
+        System.out.println("After adding 2 students, is math full?");
+        System.out.println(math.isFull());
+        System.out.println("dropping owen");
+        // dropping
+        math.dropStudent(owen);
+        System.out.println(math.isFull());
+        // counting
+        System.out.println(math.countEnrolledStudents());
+        // increasing class size
+        math.increaseClassSizeBy(1);
+        math.enrollStudent(ana);
+        math.enrollStudent(owen);
+        System.out.println(math.toString());
     }
 }
