@@ -1,7 +1,10 @@
-public class Skyview {
+public class SkyView {
     private double[][] view;
 
-    Skyview(int numberOfRows, int numberOfCols, double[] scanned) {
+    SkyView(int numberOfRows, int numberOfCols, double[] scanned) {
+        if (numberOfCols * numberOfRows < scanned.length) {
+            throw new IllegalArgumentException("Matrix too small");
+        }
         this.view = new double[numberOfRows][numberOfCols];
         int index = 0;
         for (int i = 0; i < numberOfRows; i++) {
@@ -41,7 +44,7 @@ public class Skyview {
         return output;
     }
 
-    public boolean equals(Skyview other) {
+    public boolean equals(SkyView other) {
         for (int i = 0; i < view.length; i++) {
             for (int j = 0; j < view[i].length; j++) {
                 if (view[i][j] != other.view[i][j]) {
@@ -51,5 +54,23 @@ public class Skyview {
         }
         return true;
     }
-}
 
+
+
+    public double getAverage(int startRow, int endRow, int startCol, int endCol) {
+        if (startRow > endRow || startCol > endCol) {
+            throw new IllegalArgumentException("Start values must be less then end values");
+        }
+        double output = 0;
+        int count = 0;
+        for (int i = startRow; i <= endRow; i++) {
+            for (int j = startCol; j <= endCol; j++) {
+                output += view[i][j];
+                count++;
+            }
+        }
+        return output / count;
+    }
+
+
+}
