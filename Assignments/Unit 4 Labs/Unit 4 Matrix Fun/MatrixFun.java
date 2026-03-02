@@ -3,10 +3,10 @@ class MatrixFun {
 
 
     MatrixFun(int numberOfRows, int numberOfCols) {
-        if (numberOfRows < 0 || numberOfCols < 0) {
+        if (numberOfRows <= 0 || numberOfCols <= 0) {
             throw new IllegalArgumentException("Rows and Cols must be positive");
         }
-        this.matrix = new int[numberOfCols][numberOfRows];
+        this.matrix = new int[numberOfRows][numberOfCols];
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfCols; j++) {
                 matrix[i][j] = (int) (Math.random() * 9 + 1);
@@ -55,11 +55,12 @@ class MatrixFun {
     }
 
     public boolean equals(int[][] otherMatrix) {
-        return (this.toString().equals(otherMatrix.toString()));
+        MatrixFun other = new MatrixFun(otherMatrix);
+        return (this.toString().equals(other.toString()));
     }
 
     public void replaceAll(int oldValue, int newValue) {
-        if(oldValue > 9 || oldValue < 1 || newValue < 1 || newValue > 9) {
+        if (oldValue > 9 || oldValue < 1 || newValue < 1 || newValue > 9) {
             throw new IllegalArgumentException("Old and new values must be between 1 and 9");
         }
         for (int i = 0; i < matrix.length; i++) {
@@ -72,7 +73,7 @@ class MatrixFun {
     }
 
     public void swapRow(int rowA, int rowB) {
-        if (rowA < 0 || rowB < 0) {
+        if (rowA < 0 || rowB < 0 || rowA >= matrix.length || rowB >= matrix.length) {
             throw new IllegalArgumentException("Rows A and B must be positive");
         }
         int[] placeholder = matrix[rowA];

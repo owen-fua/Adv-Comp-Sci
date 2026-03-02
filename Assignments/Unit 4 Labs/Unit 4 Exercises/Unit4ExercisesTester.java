@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Unit4ExercisesTester {
     public static void main(String[] args) {
         // matching end sequencess
@@ -29,6 +31,30 @@ public class Unit4ExercisesTester {
         printIntArray(Unit4Exercises.moveEvenBeforeOdd(testArray));
         printIntArray(Unit4Exercises.moveEvenBeforeOdd(testArray2));
         printIntArray(Unit4Exercises.moveEvenBeforeOdd(testArray3));
+        // no negatives
+        System.out.println("\nTesting no negatives");
+        ArrayList<Integer> testArray5 = new ArrayList<Integer>();
+        testArray5.add(-2);
+        testArray5.add(1);
+        System.out.println((Unit4Exercises.noNegatives(testArray5)));
+        // exlucude teen numbers
+        System.out.println("\n");
+        testArray5.add(17);
+        System.out.println((Unit4Exercises.excludeTeenNumbers(testArray5)));
+        // appendY
+        System.out.println("\n");
+        ArrayList<String> testArray6 = new ArrayList<String>();
+        testArray6.add("a");
+        testArray6.add("b");
+        testArray6.add("c");
+        testArray6.add("y");
+        testArray6.add("");
+        System.out.println(Unit4Exercises.appendY(testArray6));
+        // squarePlus10
+        System.out.println("\n");
+        testArray5.add(-3);
+        System.out.println((Unit4Exercises.squarePlus10(testArray5)));
+
 
     }
 
@@ -49,4 +75,6 @@ public class Unit4ExercisesTester {
         output += array[array.length - 1] + "]";
         System.out.println(output);
     }
+
+
 }
